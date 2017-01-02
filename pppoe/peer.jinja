@@ -1,0 +1,12 @@
+{% set pppoe = salt['pillar.get']('pppoe') -%}
+plugin rp-pppoe.so
+enp2s0
+user {{ pppoe.user }}@{{ pppoe.peer }}
+persist
+defaultroute
++ipv6
+lcp-echo-interval 20
+lcp-echo-failure 3
+noauth
+noaccomp
+default-asyncmap
