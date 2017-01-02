@@ -33,7 +33,14 @@ wireless:
 
 dns:
   zones:
-    - example.com
+    # TODO: consider a template file instead?
+    example.com:
+      - name: ns1
+        rdtype: A
+        data: 10.3.1.1
+      - name: gateway
+        rdtype: CNAME
+        data: ns1.example.com
   forwarders:
     - 8.8.8.8
     - 8.8.4.4
