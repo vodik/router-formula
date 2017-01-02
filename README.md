@@ -31,12 +31,19 @@ wireless:
     country_code: CA
     wpa_passphrase: XXXXXXXX
 
+dns:
+  zones:
+    - example.com
+  forwarders:
+    - 8.8.8.8
+    - 8.8.4.4
+
 ddns:
   algorithm: HMAC-MD5.SIG-ALG.REG.INT
   secret: XXXXXXXXXXXXXXXXXXXXXXXX
   zones:
-    - lan.example.com.
-    - 1.3.10.in-addr.arpa.
+    - lan.example.com
+    - 1.3.10.in-addr.arpa
 ```
 
 Note that while I'm working on generalizing it as much as possible,
@@ -50,8 +57,8 @@ delegation). Lots of pieces still missing from here.
 - Basic networking setup (systemd-networkd) to setup a bridge with all
   specified interfaces, assign static IPs, etc.
 - Wireless access point (hostapd)
-- DHCP server (dhcpd4) with dynamic DNS support (bind missing, see
-  below)
+- DHCP server (dhcpd4) with dynamic DNS support
+- Split-horizon DNS for my domain for internal naming (and dynamic dns)
 
 ## Roadmap
 
@@ -59,7 +66,7 @@ There are still quite a few pieces of my router that still need to be
 encoded here:
 
 - The firewall (nftables) and a clamp-mss-to-pmtu hack for pppoe
-- Split-horizon DNS for my domain for internal naming (and dynamic dns)
+- DNS entries. For example, ns1.vodik.xyz is currently hard coded
 - IPv6 support through DHCP prefix delegation (dhcpcd-pd)
 - Dynamic DNS support with a hook in pppoe to update DigitalOcean DNS
 - Enabling usbnet

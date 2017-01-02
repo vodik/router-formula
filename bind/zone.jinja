@@ -1,0 +1,10 @@
+$ORIGIN .
+$TTL 172800	; 2 days
+{{ zone }}		IN SOA	ns1.vodik.xyz. hostmaster.sangoma.com. (
+                2016121200 ; serial
+                21600      ; refresh (6 hours)
+                3600       ; retry (1 hour)
+                604800     ; expire (1 week)
+                86400      ; minimum (1 day)
+                )
+            NS	ns1.vodik.xyz.
